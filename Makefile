@@ -7,6 +7,8 @@ BIN  = $(CWD)/bin
 INC  = $(CWD)/inc
 SRC  = $(CWD)/src
 TMP  = $(CWD)/tmp
+REF  = $(CWD)/ref
+GZ   = $(HOME)/gz
 
 # tool
 CURL = curl -L -o
@@ -46,9 +48,11 @@ update:
 	sudo apt update
 	sudo apt install -uy `cat apt.txt`
 gz:
-ref: ref/master/.gitmodules ref/qt5/.gitmodules
+ref: ref/master/.gitmodules ref/qt5/README.md
 ORIGIN = https://github.com/AlexObukhoff/TerminalClient
 ref/master/.gitmodules:
 	git clone --depth 1 -o gh -b master $(ORIGIN) ref/master
-ref/qt5/.gitmodules:
-	git clone --depth 1 -o gh -b qt5    $(ORIGIN) ref/qt5
+ref/qt5/README.md: $(GZ)/$(MODULE)-qt5.zip
+	unzip -d ref/qt5 $< && touch $@
+$(GZ)/$(MODULE)-qt5.zip:
+	$(CURL) $@ https://github.com/AlexObukhoff/TerminalClient/archive/refs/heads/qt5.zip
