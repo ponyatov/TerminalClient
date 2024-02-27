@@ -1,5 +1,5 @@
 # `TerminalClient`
-## portable fork: Opensource version of Terminal Client
+## portable fork of Cyberplat's version
 
 (c) Cyberplat
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> 2024
