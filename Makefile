@@ -40,9 +40,16 @@ bin/$(MODULE): $(C) $(H)
 doxy: .doxygen $(C) $(D)
 	rm -rf docs ; doxygen $< 1>/dev/null
 
+.PHONY: doc
+doc: \
+	doc/Book_Cyberplat.pdf
+
+doc/Book_Cyberplat.pdf:
+	$(CURL) $@ https://www.cyberplat.ru/download/Book_Cyberplat.pdf
+
 # install
 .PHONY: install update gz ref
-install: gz ref
+install: doc gz ref
 	$(MAKE) update
 update:
 	sudo apt update
