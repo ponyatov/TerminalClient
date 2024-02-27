@@ -1,4 +1,4 @@
-#include <hello.hpp>
+#include <main.hpp>
 
 int main(int argc, char *argv[]) {  //
     for (int i = 0; i < argc; i++) arg(i, argv[i]);
