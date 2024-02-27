@@ -1,6 +1,6 @@
 PROJECT_NAME           = "TerminalClient"
 PROJECT_BRIEF          = "portable fork of Cyberplat's version"
-PROJECT_LOGO           = doc/Cyberplat.png
+PROJECT_LOGO           = doc/Cyberplat_64.png
 HTML_OUTPUT            = docs
 OUTPUT_DIRECTORY       =
 INPUT                  = README.md doc src inc
