@@ -42,10 +42,27 @@ doxy: .doxygen $(C) $(D)
 
 .PHONY: doc
 doc: \
-	doc/Book_Cyberplat.pdf
+	doc/Book_Cyberplat.pdf \
+	doc/API_ISO20022.pdf doc/API_CyberPlat.pdf doc/API_payment_cards.pdf \
+	doc/multistage-gateways.pdf doc/DealerSertification.pdf \
+	doc/Autopayment_API.pdf doc/Autopayment_Manual.pdf
 
 doc/Book_Cyberplat.pdf:
 	$(CURL) $@ https://www.cyberplat.ru/download/Book_Cyberplat.pdf
+doc/API_ISO20022.pdf:
+	$(CURL) $@ https://www.cyberplat.ru/download/API_ISO20022.pdf
+doc/API_CyberPlat.pdf:
+	$(CURL) $@ https://www.cyberplat.ru/download/API_CyberPlat.pdf
+doc/API_payment_cards.pdf:
+	$(CURL) $@ https://www.cyberplat.ru/download/API_payment_cards.pdf
+doc/multistage-gateways.pdf:
+	$(CURL) $@ https://www.cyberplat.ru/download/multistage-gateways.pdf
+doc/DealerSertification.pdf:
+	$(CURL) $@ https://www.cyberplat.ru/download/DealerSertification.pdf
+doc/Autopayment_API.pdf:
+	$(CURL) $@ https://www.cyberplat.ru/download/Autopayment_API.pdf
+doc/Autopayment_Manual.pdf:
+	$(CURL) $@ https://www.cyberplat.ru/download/Autopayment_Manual.pdf
 
 # install
 .PHONY: install update gz ref
@@ -54,8 +71,14 @@ install: doc gz ref
 update:
 	sudo apt update
 	sudo apt install -uy `cat apt.txt`
-gz:
-ref: ref/master/.gitmodules ref/qt5/README.md
+gz: \
+	$(GZ)/22062021_libipriv_win.zip
+
+$(GZ)/22062021_libipriv_win.zip:
+	$(CURL) $@ https://www.cyberplat.ru/download/22062021_libipriv_win.zip
+
+ref: \
+	ref/master/.gitmodules ref/qt5/README.md
 ORIGIN = https://github.com/AlexObukhoff/TerminalClient
 ref/master/.gitmodules:
 	git clone --depth 1 -o gh -b master $(ORIGIN) ref/master
