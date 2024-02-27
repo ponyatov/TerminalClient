@@ -33,6 +33,11 @@ tmp/format_cpp: $(C) $(H)
 bin/$(MODULE): $(C) $(H)
 	$(CXX) $(CFLAGS) -o $@ $(C) $(L)
 
+# doc
+.PHONY: doxy
+doxy: .doxygen $(C) $(D)
+	rm -rf docs ; doxygen $< 1>/dev/null
+
 # install
 .PHONY: install update gz ref
 install: gz ref
