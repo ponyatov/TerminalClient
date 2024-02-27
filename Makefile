@@ -16,6 +16,9 @@ CF   = clang-format
 
 # src
 C += $(wildcard src/*.c*)
+C += $(wildcard $(addsuffix *.c*, $(wildcard src/app/*/)))
+C += $(wildcard $(addsuffix *.c*, $(wildcard src/module/*/)))
+
 H += $(wildcard inc/*.h*)
 
 # cfg
@@ -86,3 +89,4 @@ ref/$(MODULE)-qt5/README.md: $(GZ)/$(MODULE)-qt5.zip
 	unzip -d ref $< && touch $@
 $(GZ)/$(MODULE)-qt5.zip:
 	$(CURL) $@ https://github.com/AlexObukhoff/TerminalClient/archive/refs/heads/qt5.zip
+
