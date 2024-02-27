@@ -78,11 +78,11 @@ $(GZ)/22062021_libipriv_win.zip:
 	$(CURL) $@ https://www.cyberplat.ru/download/22062021_libipriv_win.zip
 
 ref: \
-	ref/master/.gitmodules ref/qt5/README.md
+	ref/master/.gitmodules ref/$(MODULE)-qt5/README.md
 ORIGIN = https://github.com/AlexObukhoff/TerminalClient
 ref/master/.gitmodules:
 	git clone --depth 1 -o gh -b master $(ORIGIN) ref/master
-ref/qt5/README.md: $(GZ)/$(MODULE)-qt5.zip
-	unzip -d ref/qt5 $< && touch $@
+ref/$(MODULE)-qt5/README.md: $(GZ)/$(MODULE)-qt5.zip
+	unzip -d ref $< && touch $@
 $(GZ)/$(MODULE)-qt5.zip:
 	$(CURL) $@ https://github.com/AlexObukhoff/TerminalClient/archive/refs/heads/qt5.zip
